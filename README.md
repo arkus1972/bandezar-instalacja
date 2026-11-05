@@ -2,7 +2,7 @@
 
 Terminy, piosenki, setlisty, rider, media i wiadomości w jednym miejscu, dla całego zespołu.
 Bandezar instaluje się na **Waszym własnym koncie Cloudflare**: dane są tylko Wasze, bez abonamentu za serwer.
-Darmowy plan Cloudflare wystarcza jednemu zespołowi z zapasem (baza 500 MB, pliki 10 GB).
+Darmowy plan Cloudflare wystarcza jednemu zespołowi z zapasem (baza 500 MB, pliki ok. 5 GB) i nie wymaga karty płatniczej.
 
 ## Instalacja (ok. 5 minut, bez programowania)
 

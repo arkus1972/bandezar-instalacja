@@ -12,6 +12,7 @@
    * wiadomości: serwer dostaje tylko szyfr (bz1:...), nadawcę i czas wpisuje sam. */
 
 import { sprawdzLicencje } from './licencja.mjs';
+import { schowek } from './pliki-do.mjs';
 
 const ROLES = ['lider', 'edycja', 'odczyt'];
 const STORES = ['members', 'albums', 'songs', 'setlists', 'events', 'riders', 'media', 'radio', 'venues', 'band', 'pulse'];
@@ -405,7 +406,8 @@ async function ids(env, url, me) {
 
 /* ---------- pliki z Mediów (R2): klucz <zespół>/<plik> ---------- */
 async function files(env, request, url, me, parts) {
-  if (!env.PLIKI) oops(503, 'not_configured');
+  const PLIKI = schowek(env);   /* R2 (bandezar-app) albo schowek w Durable Object (instalacja zespołu, bez karty) */
+  if (!PLIKI) oops(503, 'not_configured');
   const b = bandP(parts[0]), id = parts[1] || '';
   if (!FID.test(id)) oops(400, 'file');
   const key = b + '/' + id;
@@ -413,14 +415,14 @@ async function files(env, request, url, me, parts) {
     if (request.method !== 'POST') oops(405, 'method');
     await need(env, b, me.id, ['lider', 'edycja']);
     const d = await body(request, 1000), secs = Math.min(400 * 86400, Math.max(60, parseInt(d.secs, 10) || 3600)), exp = Math.floor(Date.now() / 1000) + secs;
-    if (!(await env.PLIKI.head(key))) oops(404, 'file');
+    if (!(await PLIKI.head(key))) oops(404, 'file');
     const s = await hmac(SECRET, 'plik|' + key + '|' + exp);
     return json({ url: url.origin + '/api/plik/' + key + '?e=' + exp + '&s=' + s });
   }
   if (parts.length !== 2) oops(404, 'not_found');
   if (request.method === 'GET') {
     await need(env, b, me.id);
-    const o = await env.PLIKI.get(key);
+    const o = await PLIKI.get(key);
     if (!o) oops(404, 'file');
     return new Response(o.body, { headers: { 'content-type': o.httpMetadata && o.httpMetadata.contentType || 'application/octet-stream', 'content-disposition': 'attachment', ...NOSTORE } });
   }
@@ -432,12 +434,12 @@ async function files(env, request, url, me, parts) {
     if (len > MEDIA_MAX) oops(413, 'too_big');
     const buf = await request.arrayBuffer();
     if (buf.byteLength > MEDIA_MAX || !buf.byteLength) oops(413, 'too_big');
-    await env.PLIKI.put(key, buf, { httpMetadata: { contentType: type } });
+    await PLIKI.put(key, buf, { httpMetadata: { contentType: type } });
     return json({ ok: true });
   }
   if (request.method === 'DELETE') {
     await need(env, b, me.id, ['lider', 'edycja']);
-    await env.PLIKI.delete(key);
+    await PLIKI.delete(key);
     return json({ ok: true });
   }
   oops(405, 'method');
@@ -445,13 +447,14 @@ async function files(env, request, url, me, parts) {
 /* link do jednego pliku dla osób spoza zespołu (np. PDF oferty dla klubu): podpisany, z datą ważności */
 async function publicFile(env, url) {
   await ensure(env);
-  if (!env.PLIKI) return fail(503, 'not_configured');
+  const PLIKI = schowek(env);
+  if (!PLIKI) return fail(503, 'not_configured');
   const m = /^\/api\/plik\/([0-9a-f-]{36})\/([A-Za-z0-9_-]{1,80})$/.exec(url.pathname);
   const exp = parseInt(url.searchParams.get('e') || '', 10), s = url.searchParams.get('s') || '';
   if (!m || !UUID.test(m[1]) || !exp || exp < Date.now() / 1000) return fail(404, 'file');
   const key = m[1] + '/' + m[2];
   if (!same(s, await hmac(SECRET, 'plik|' + key + '|' + exp))) return fail(404, 'file');
-  const o = await env.PLIKI.get(key);
+  const o = await PLIKI.get(key);
   if (!o) return fail(404, 'file');
   const type = o.httpMetadata && o.httpMetadata.contentType || 'application/octet-stream';
   return new Response(o.body, { headers: { 'content-type': MEDIA_OK.test(type) ? type : 'application/octet-stream', 'content-disposition': 'inline', 'cache-control': 'private, max-age=3600',

@@ -12,6 +12,7 @@ import oferta from './serwer/oferta.mjs';
 import dysk from './serwer/dysk.mjs';
 import baza, { publicFile, socket, icsFeed, userFrom, roleOf } from './serwer/baza.mjs';
 export { Zespol } from './serwer/na-zywo.mjs';
+export { Pliki } from './serwer/pliki-do.mjs';
 
 /* dla /api/oferta i /api/dysk: kto jest zalogowany i jaką ma rolę (zamiast pytać Supabase) */
 function withAuth(env) {
