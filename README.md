@@ -24,6 +24,8 @@ Darmowy plan Cloudflare wystarcza jednemu zespołowi z zapasem (baza 500 MB, pli
 
 **Kalendarz w telefonie:** Ustawienia → Wspólne dane → **Pokaż link do kalendarza** i dodaj go w Kalendarzu Google, na iPhonie albo w Outlooku.
 
+**Radio, statystyki, ceny paliw, Dysk i Kalendarz Google:** Ustawienia → **Połączenia**. Wpisz nazwę wykonawcy, a Bandezar sam, co godzinę, pobiera emisje w radiu (odsluchane.eu), fanów z Deezera i ceny paliw. Last.fm, YouTube, Dysk Google i Kalendarz Google potrzebują Waszych własnych, darmowych kluczy: instrukcja krok po kroku jest przy każdym polu.
+
 ## Bezpieczeństwo
 - Wszystko leży na Waszym koncie Cloudflare. Twórca Bandezara nie ma do tego dostępu.
 - Bez haseł: wejście kodem licencji (lider) i jednorazowymi linkami (koledzy, kolejne urządzenia).

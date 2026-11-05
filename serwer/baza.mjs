@@ -12,6 +12,7 @@
    * wiadomości: serwer dostaje tylko szyfr (bz1:...), nadawcę i czas wpisuje sam. */
 
 import { sprawdzLicencje } from './licencja.mjs';
+import { stanUslug, zapiszUstawienia, odswiez } from './uslugi.mjs';
 import { schowek } from './pliki-do.mjs';
 
 const ROLES = ['lider', 'edycja', 'odczyt'];
@@ -52,7 +53,7 @@ async function body(request, max) {
 }
 
 /* ---------- schemat bazy: zakładany sam przy pierwszym użyciu (nikt nie musi uruchamiać SQL) ---------- */
-const SCHEMA_V = '2';
+const SCHEMA_V = '3';
 const SCHEMA = [
   `CREATE TABLE IF NOT EXISTS meta (k TEXT PRIMARY KEY, v TEXT NOT NULL)`,
   `CREATE TABLE IF NOT EXISTS users (id TEXT PRIMARY KEY, email TEXT NOT NULL UNIQUE, created_at INTEGER NOT NULL)`,
@@ -70,6 +71,9 @@ const SCHEMA = [
   `CREATE INDEX IF NOT EXISTS band_messages_band ON band_messages(band_id, created_at)`,
   `CREATE TABLE IF NOT EXISTS msg_keys (user_id TEXT PRIMARY KEY, pub TEXT NOT NULL, priv TEXT NOT NULL, salt TEXT NOT NULL, updated_at INTEGER NOT NULL)`,
   `CREATE TABLE IF NOT EXISTS device_codes (h TEXT PRIMARY KEY, user_id TEXT NOT NULL, exp INTEGER NOT NULL)`,
+  /* v3: połączenia instalacji zespołu (serwer/uslugi.mjs): emisje w radiu i statystyki dzień po dniu */
+  `CREATE TABLE IF NOT EXISTS radio_plays (k TEXT PRIMARY KEY, d TEXT NOT NULL, t TEXT NOT NULL, st TEXT NOT NULL, ti TEXT NOT NULL)`,
+  `CREATE TABLE IF NOT EXISTS staty_dni (d TEXT PRIMARY KEY, v TEXT NOT NULL)`,
   `INSERT OR IGNORE INTO meta (k, v) VALUES ('rev', '0')`
 ];
 let ready = null, SECRET = '';
@@ -283,6 +287,28 @@ async function licenseInfo(env) {
   const v = await env.DB.prepare(`SELECT v FROM meta WHERE k = 'zespol'`).first('v');
   let d = null; try { d = v ? JSON.parse(v) : null; } catch (_) { d = null; }
   return json(d ? { n: d.n, i: d.i, d: d.d } : {});
+}
+
+/* ---------- POŁĄCZENIA (tylko instalacja zespołu): radio, W sieci, ceny paliw, klucze Google/Last.fm. Opis: dokumentacja/POLACZENIA-ZESPOLU.md ---------- */
+async function onlyBand(env, me, roles) {
+  if (!ZES(env)) oops(404, 'not_found');
+  const b = await env.DB.prepare(`SELECT id FROM bands LIMIT 1`).first('id');
+  if (!b) oops(404, 'not_found');
+  await need(env, b, me.id, roles);
+  return b;
+}
+async function servicesGet(env, me) { await onlyBand(env, me); return json(await stanUslug(env)); }
+async function servicesSet(env, request, me) {
+  await onlyBand(env, me, ['lider']);
+  const d = await body(request, 3000), bad = await zapiszUstawienia(env, d);
+  if (bad) oops(400, 'pole_' + bad);
+  return json(await stanUslug(env));
+}
+async function servicesNow(env, me) {
+  await onlyBand(env, me, ['lider']);
+  await limit(env, 'uslugi:' + me.id, 10, 3600000, 20000);
+  await odswiez(env, true);
+  return json(await stanUslug(env));
 }
 
 /* ---------- KALENDARZ jako link do subskrypcji (Google, Apple, Outlook): tylko koncerty, próby i inne terminy zespołu ---------- */
@@ -586,6 +612,9 @@ export default async function baza(request, env, ctx) {
       case 'POST urzadzenie': return await deviceCode(env, me);
       case 'POST kalendarz': return await calLink(env, request, url, me);
       case 'GET licencja': return await licenseInfo(env);
+      case 'GET uslugi': return await servicesGet(env, me);
+      case 'POST uslugi': return await servicesSet(env, request, me);
+      case 'POST uslugi/teraz': return await servicesNow(env, me);
     }
     if (p[0] === 'pliki') return await files(env, request, url, me, p.slice(1));
     return fail(404, 'not_found');

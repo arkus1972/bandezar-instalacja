@@ -40,7 +40,7 @@ export default async function dysk(request, env) {
     if (!who || !who.ok) return fail(401, 'login');
   }
 
-  const headers = { accept: 'application/json', referer: 'https://bandezar.arkus1972.workers.dev/' };
+  const headers = { accept: 'application/json', referer: new URL(request.url).origin + '/' };
   if (rk) headers['x-goog-drive-resource-keys'] = id + '/' + rk;
   const items = []; let page = '', pages = 0;
   do {

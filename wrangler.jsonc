@@ -10,13 +10,15 @@
   "assets": {
     "directory": "app/dist/web",
     "binding": "ASSETS",
-    "run_worker_first": ["/api/*", "/", "/index.html"]
+    "run_worker_first": ["/api/*", "/", "/index.html", "/radio.json", "/staty.json", "/paliwa.json"]
   },
   "observability": { "enabled": true },
   "d1_databases": [{ "binding": "DB", "database_name": "bandezar" }],
   // Pliki z Mediów: bez R2 (R2 na nowym koncie wymaga karty płatniczej), w schowku Durable Object „Pliki” (serwer/pliki-do.mjs).
   "durable_objects": { "bindings": [{ "name": "ZESPOL", "class_name": "Zespol" }, { "name": "SCHOWEK", "class_name": "Pliki" }] },
   "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Zespol"] }, { "tag": "v2", "new_sqlite_classes": ["Pliki"] }],
+  // Zegar: co godzinę radio (odsluchane.eu), ceny paliw (biuletyn KE) i raz dziennie statystyki (serwer/uslugi.mjs).
+  "triggers": { "crons": ["17 * * * *"] },
   "vars": { "TRYB": "zespol" },
   "previews": { "vars": { "TRYB": "zespol" } }
 }

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-XV/bVyLB4wY1BVWn+HzbeCftuagjNB0R0DbQ6J8puLM='; style-src 'sha256-8uoSA4TGD1nFzJUtJQViWEAHUG9lnihPvd0yFFXD2W8='; img-src 'self' data: blob: https://i.scdn.co; media-src blob:; font-src data:; connect-src https://open.spotify.com https://i.scdn.co https://ltjmvprypioecsdduhwy.supabase.co wss://ltjmvprypioecsdduhwy.supabase.co https://www.googleapis.com https://bandezar.arkus1972.workers.dev 'self'; frame-src https://open.spotify.com https://drive.google.com; manifest-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-SxJEgYW1vfs0xA8IW4TY6aS5I6rULY93EdAYrTq9t0U='; style-src 'sha256-8uoSA4TGD1nFzJUtJQViWEAHUG9lnihPvd0yFFXD2W8='; img-src 'self' data: blob: https://i.scdn.co; media-src blob:; font-src data:; connect-src https://open.spotify.com https://i.scdn.co https://ltjmvprypioecsdduhwy.supabase.co wss://ltjmvprypioecsdduhwy.supabase.co https://www.googleapis.com https://bandezar.arkus1972.workers.dev 'self'; frame-src https://open.spotify.com https://drive.google.com; manifest-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#F3F0EA">
@@ -1666,6 +1666,45 @@ Object.assign(EN, {
   "przeczytana": "read", "{n} z {m} znaków": "{n} of {m} characters", "Napisz wiadomość": "Write a message", "Moje wiadomości": "My messages"
 });
 Object.assign(EN_PL, { 'nowa wiadomość':['new message','new messages'], 'nowa':['new','new'] });
+/* Połączenia instalacji zespołu (22b-baza-cf.js, cfLinks) */
+Object.assign(EN, {
+  'Połączenia': 'Connections', 'Wczytuję…': 'Loading…', 'jeszcze nie': 'not yet',
+  'Bandezar sam pobiera emisje w radiu, statystyki „W sieci” i ceny paliw (co godzinę). Klucze zapisują się tylko w bazie Waszego zespołu.': 'Bandezar fetches radio plays, online stats and fuel prices by itself (every hour). Keys are stored only in your band’s database.',
+  'brak połączenia z serwisem': 'service not reachable', 'nie znaleziono wykonawcy': 'artist not found', 'klucz odrzucony': 'key rejected', 'nie znaleziono kanału': 'channel not found',
+  'W radiu': 'On the radio', 'W sieci': 'Online', 'Ceny paliw': 'Fuel prices',
+  '{n} emisji w bazie, sprawdzone: {d}': '{n} plays stored, checked: {d}', 'wpisz nazwę wykonawcy': 'enter the artist name', 'ostatnio {d}': 'last {d}', 'biuletyn z {d}': 'bulletin of {d}',
+  'Połączenia ustawia lider zespołu.': 'Connections are set by the band leader.',
+  'nazwa zespołu, jak w odsluchane.eu i na Deezerze': 'band name as on odsluchane.eu and Deezer', 'ustawiony, kończy się na {k}': 'set, ends with {k}', 'wklej klucz': 'paste the key',
+  'Usuń klucz Last.fm': 'Remove the Last.fm key', 'Usuń klucz Google': 'Remove the Google key',
+  'Nazwa wykonawcy': 'Artist name', 'Tak jak na odsluchane.eu i na Deezerze. Z niej biorą się emisje w radiu i statystyki.': 'As on odsluchane.eu and Deezer. Radio plays and stats are matched by it.',
+  'Kanał YouTube': 'YouTube channel', 'np. @muzykakoncalata (do statystyk potrzebny jest też klucz Google).': 'e.g. @yourband (stats also need a Google key).',
+  'Klucz Last.fm': 'Last.fm key', 'Jak zdobyć klucz Last.fm (za darmo, 2 minuty)?': 'How to get a Last.fm key (free, 2 minutes)?',
+  'W przeglądarce: załóż konto na ': 'In the browser: create an account on ', ' i zaloguj się.': ' and sign in.', 'Otwórz ': 'Open ',
+  'Wpisz e-mail i nazwę aplikacji (np. Bandezar), resztę zostaw pustą, kliknij Submit.': 'Enter your e-mail and an application name (e.g. Bandezar), leave the rest empty, click Submit.',
+  'Skopiuj „API key” (32 znaki, nie „Shared secret”) i wklej wyżej.': 'Copy the “API key” (32 characters, not the “Shared secret”) and paste it above.',
+  'Klucz Google (YouTube i Dysk)': 'Google key (YouTube and Drive)', 'Jak zdobyć klucz Google (za darmo, bez karty, ok. 5 minut)?': 'How to get a Google key (free, no card, about 5 minutes)?',
+  'W przeglądarce otwórz ': 'In the browser open ', ' i zaloguj się kontem Google zespołu.': ' and sign in with the band’s Google account.',
+  'Na górze: wybór projektu → Nowy projekt → nazwa np. Bandezar → Utwórz.': 'At the top: project picker → New project → name e.g. Bandezar → Create.',
+  'Menu ☰ → Interfejsy API i usługi → Biblioteka: znajdź i włącz „YouTube Data API v3”, potem „Google Drive API”.': 'Menu ☰ → APIs & Services → Library: find and enable “YouTube Data API v3”, then “Google Drive API”.',
+  'Interfejsy API i usługi → Dane logowania → + Utwórz dane logowania → Klucz interfejsu API.': 'APIs & Services → Credentials → + Create credentials → API key.',
+  'Przy nowym kluczu: Ograniczenia interfejsu API → Ogranicz klucz → zaznacz tylko te dwa API → Zapisz.': 'On the new key: API restrictions → Restrict key → tick only these two APIs → Save.',
+  'Skopiuj klucz (zaczyna się od AIza) i wklej wyżej. Foldery z Dysku muszą być udostępnione „Każdy, kto ma link”.': 'Copy the key (starts with AIza) and paste it above. Drive folders must be shared as “Anyone with the link”.',
+  'Kalendarz Google: identyfikator klienta': 'Google Calendar: client ID',
+  'Niepotrzebny, jeśli wystarczy „Kalendarz w telefonie” wyżej. Z nim terminy same trafiają do Kalendarza Google.': 'Not needed if the “Calendar on your phone” link above is enough. With it, dates go to Google Calendar by themselves.',
+  'Jak połączyć Kalendarz Google (ok. 10 minut)?': 'How to connect Google Calendar (about 10 minutes)?',
+  'W tym samym projekcie Google Cloud: Biblioteka → włącz „Google Calendar API”.': 'In the same Google Cloud project: Library → enable “Google Calendar API”.',
+  'Menu ☰ → Google Auth Platform → Rozpocznij: nazwa aplikacji (np. Bandezar), Twój e-mail, Odbiorcy: Zewnętrzni → Utwórz.': 'Menu ☰ → Google Auth Platform → Get started: app name (e.g. Bandezar), your e-mail, Audience: External → Create.',
+  'Google Auth Platform → Odbiorcy → Opublikuj aplikację (inaczej tylko osoby z listy testowej mogą się połączyć).': 'Google Auth Platform → Audience → Publish app (otherwise only test users can connect).',
+  'Google Auth Platform → Klienci → + Utwórz klienta → Typ: Aplikacja internetowa.': 'Google Auth Platform → Clients → + Create client → Type: Web application.',
+  'Autoryzowane źródła JavaScriptu: ': 'Authorized JavaScript origins: ', ' · Autoryzowane identyfikatory URI przekierowania: ': ' · Authorized redirect URIs: ',
+  'Utwórz, skopiuj „Identyfikator klienta” (kończy się na .apps.googleusercontent.com) i wklej wyżej.': 'Create, copy the “Client ID” (ends with .apps.googleusercontent.com) and paste it above.',
+  'Przy pierwszym łączeniu Google pokaże „Aplikacja niezweryfikowana”: kliknij Zaawansowane → Przejdź do Bandezar. To Wasza własna aplikacja.': 'On first connect Google shows “unverified app”: click Advanced → Go to Bandezar. It is your own app.',
+  'Zapisz i pobierz teraz': 'Save and fetch now', 'Identyfikator klienta kończy się na .apps.googleusercontent.com. Skopiuj go jeszcze raz.': 'The client ID ends with .apps.googleusercontent.com. Copy it again.',
+  'Zapisano. Pobieram dane…': 'Saved. Fetching data…',
+  'Klucz Last.fm ma 32 znaki (cyfry i litery a–f). Skopiuj „API key”, nie „Shared secret”.': 'The Last.fm key has 32 characters (digits and letters a–f). Copy the “API key”, not the “Shared secret”.',
+  'Klucz Google zaczyna się od „AIza”. Skopiuj go jeszcze raz z Google Cloud.': 'A Google key starts with “AIza”. Copy it again from Google Cloud.',
+  'Kanał YouTube wpisz jako @nazwa albo identyfikator zaczynający się od UC.': 'Enter the YouTube channel as @name or an ID starting with UC.'
+});
 
 /* ===== 03-db.js ===== */
 /* Bandezar – dane na urządzeniu (IndexedDB) i stan w pamięci.
@@ -1931,7 +1970,7 @@ function sBand(v){
     links: { spotify: sUrl(L.spotify), facebook: sUrl(L.facebook), instagram: sUrl(L.instagram), youtube: sUrl(L.youtube), www: sUrl(L.www) },
     mediaCats: sArr(v.mediaCats, sCat, 30), tags: sArr(v.tags, sTag, 60), radioArtist: sLine(v.radioArtist, 80), pulsometronUrl: sUrl(v.pulsometronUrl), nameMode: sEnum(v.nameMode, ['nick', 'name', 'both'], 'nick'),
     base: sBase(v.base), cars: sArr(v.cars, sCar, 30), fuel: sFuel(v.fuel), rates: sRates(v.rates), money: sEnum(v.money, ['all', 'edit', 'leader'], 'all'), currency: sLine(v.currency, 6) || 'zł',
-    offer: sOffer(v.offer),
+    offer: sOffer(v.offer), gkalId: /^\d{6,20}-[a-z0-9]{10,40}\.apps\.googleusercontent\.com$/.test(String(v.gkalId || '')) ? v.gkalId : '',
     updatedAt: sInt(v.updatedAt, 0, 9e15, 0) };
 }
 function sDomain(v){ v = sLine(v, 120).toLowerCase(); return /^[a-z0-9-]{1,63}(\.[a-z0-9-]{1,63})+$/.test(v) ? v : ''; }
@@ -3678,7 +3717,7 @@ function radioAuto(force){
   var url = /^https:$/.test(location.protocol) && location.hostname ? 'radio.json' : RADIO_URL;
   return fetch(url, { credentials: 'omit', cache: 'no-store', referrerPolicy: 'no-referrer' }).then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
     .then(function(d){ if(!d || typeof d !== 'object' || !Array.isArray(d.plays)) throw new Error('format');
-      if(key(sLine(d.artist, 100) || 'Muzyka Końca Lata') !== key(S.band.name || '')) return 0;
+      var art = key(sLine(d.artist, 100) || 'Muzyka Końca Lata'); if(art !== key(S.band.name || '') && art !== key(S.band.radioArtist || '')) return 0;
       RADIO_INFO = { updated: sLine(d.updated, 20), ok: true };
       return addRadio(sArr(d.plays, sRadio, 50000), true); })
     .catch(function(){ return 0; });
@@ -5109,7 +5148,10 @@ var CF_ERR = {
   too_many_bands: 'Za dużo zespołów na jednym koncie.',
   too_big: 'Za duży plik albo za dużo danych naraz.',
   type: 'Ten rodzaj pliku nie jest obsługiwany.',
-  login: 'Nie jesteś zalogowany.'
+  login: 'Nie jesteś zalogowany.',
+  pole_lf: 'Klucz Last.fm ma 32 znaki (cyfry i litery a–f). Skopiuj „API key”, nie „Shared secret”.',
+  pole_gk: 'Klucz Google zaczyna się od „AIza”. Skopiuj go jeszcze raz z Google Cloud.',
+  pole_yt: 'Kanał YouTube wpisz jako @nazwa albo identyfikator zaczynający się od UC.'
 };
 function cfFetch(path, opts){
   opts = opts || {}; var h = {};
@@ -5264,6 +5306,7 @@ function cfExtras(box){
       linkOut(dOut, t('Link dla Twojego drugiego urządzenia'), location.origin + location.pathname + '#urzadzenie=' + c, t('Otwórz go na telefonie albo komputerze w ciągu 15 minut (np. wyślij sobie mailem albo SMS-em). Działa raz i tylko dla Ciebie: nie dawaj go innym.')); })
       .catch(function(e){ db3.disabled = false; toast((e && e.message) || String(e)); }); }, '', 'plus');
     box.appendChild(el('h3', { cls: 'sec', text: t('Moje urządzenia') })); box.appendChild(el('div', { cls: 'acts' }, [db3])); box.appendChild(dOut);
+    cfLinks(box);
   }
   var kOut = el('div'), kb = btn(t('Pokaż link do kalendarza'), function(){ kb.disabled = true; cfApi('/kalendarz', { body: { band: C.band } }).then(function(d){ kb.disabled = false;
     var u = d && typeof d.url === 'string' && d.url.indexOf(location.origin + '/api/kalendarz/') === 0 && /^[^\s<>"']{1,600}$/.test(d.url) ? d.url : ''; if(!u) throw new Error(t('Błąd serwera ({e}).', { e: 'url' }));
@@ -5273,6 +5316,80 @@ function cfExtras(box){
   box.appendChild(el('h3', { cls: 'sec', text: t('Kalendarz w telefonie') }));
   box.appendChild(el('p', { cls: 'note', text: t('Terminy zespołu w Twoim kalendarzu (Google, iPhone, Outlook), bez logowania do Google.') }));
   box.appendChild(el('div', { cls: 'acts' }, [kb])); box.appendChild(kOut);
+}
+
+/* ---------- POŁĄCZENIA instalacji zespołu (Ustawienia): radio, W sieci, ceny paliw, Dysk i Kalendarz Google ----------
+   Serwer zespołu sam pobiera dane (serwer/uslugi.mjs). Klucze zapisuje tylko lider; do przeglądarki wraca wyłącznie „ustawiony, …1234”.
+   Client ID do Kalendarza Google jest publiczny z natury, więc trzymamy go przy zespole (S.band.gkalId). Opis: dokumentacja/POLACZENIA-ZESPOLU.md */
+var CFU_ERR = { siec: 'brak połączenia z serwisem', brak: 'nie znaleziono wykonawcy', klucz: 'klucz odrzucony', kanal: 'nie znaleziono kanału' };
+function cfHelp(title, steps){ return el('details', { cls: 'note' }, [el('summary', { text: title }), el('ol', {}, steps.map(function(s){ return el('li', {}, Array.isArray(s) ? s : [s]); }))]); }
+function cfA(href, text){ return el('a', { href: href, target: '_blank', rel: 'noopener noreferrer', text: text || href.replace(/^https:\/\//, '') }); }
+function cfWhen(ms){ var n = sInt(ms, 0, 9e15, 0); return n ? new Date(n).toLocaleString(LANG === 'en' ? 'en-GB' : 'pl-PL', { day: 'numeric', month: 'numeric', hour: '2-digit', minute: '2-digit' }) : t('jeszcze nie'); }
+function cfLinks(box){
+  var out = el('div', { cls: 'cfu' }, [el('p', { cls: 'note', text: t('Wczytuję…') })]);
+  box.appendChild(el('h3', { cls: 'sec', text: t('Połączenia') }));
+  box.appendChild(el('p', { cls: 'note', text: t('Bandezar sam pobiera emisje w radiu, statystyki „W sieci” i ceny paliw (co godzinę). Klucze zapisują się tylko w bazie Waszego zespołu.') }));
+  box.appendChild(out);
+  cfApi('/uslugi').then(function(d){ cfLinksFill(out, d); }).catch(function(e){ out.textContent = ''; out.appendChild(el('p', { cls: 'note', text: (e && e.message) || String(e) })); });
+}
+function cfLinksFill(out, d){
+  out.textContent = ''; d = d && typeof d === 'object' ? d : {};
+  var st = d.stan && typeof d.stan === 'object' ? d.stan : {}, r = st.r || {}, s = st.s || {}, p = st.p || {}, B = S.band || {};
+  function err(c){ return CFU_ERR[c] ? t(CFU_ERR[c]) : ''; }
+  var serr = s.err && typeof s.err === 'object' ? Object.keys(s.err).slice(0, 3).map(function(k){ return sLine(k, 10) + ': ' + err(s.err[k]); }).join(', ') : '';
+  var ok = Array.isArray(s.ok) ? s.ok.filter(function(k){ return /^(deezer|lastfm|youtube)$/.test(k); }).join(', ') : '';
+  out.appendChild(el('ul', { cls: 'note' }, [
+    el('li', { text: t('W radiu') + ': ' + (sLine(d.w, 100) ? t('{n} emisji w bazie, sprawdzone: {d}', { n: sInt(d.emisje, 0, 1e9, 0), d: cfWhen(r.at) }) + (r.err ? ' (' + err(r.err) + ')' : '') : t('wpisz nazwę wykonawcy')) }),
+    el('li', { text: t('W sieci') + ': ' + (s.at ? t('ostatnio {d}', { d: cfWhen(s.at) }) + (ok ? ' · ' + ok : '') + (serr ? ' · ' + serr : '') : t('jeszcze nie')) }),
+    el('li', { text: t('Ceny paliw') + ': ' + (p.d && /^\d{4}-\d\d-\d\d$/.test(p.d) ? t('biuletyn z {d}', { d: fmtDate(p.d, true) }) : t('jeszcze nie')) + (p.err ? ' (' + err(p.err) + ')' : '') })
+  ]));
+  if(!isLeader()){ out.appendChild(el('p', { cls: 'note', text: t('Połączenia ustawia lider zespołu.') })); return; }
+  var fw = inText(sLine(d.w, 100) || B.radioArtist || B.name || '', 100, t('nazwa zespołu, jak w odsluchane.eu i na Deezerze'));
+  var fyt = inText(sLine(d.yt, 110), 110, '@nazwa');
+  var flf = inText('', 40, d.lf ? t('ustawiony, kończy się na {k}', { k: sLine(d.lfEnd, 6) }) : t('wklej klucz'));
+  var fgk = inText('', 60, d.gk ? t('ustawiony, kończy się na {k}', { k: sLine(d.gkEnd, 6) }) : t('wklej klucz'));
+  var fgc = inText(B.gkalId || '', 120, '…apps.googleusercontent.com');
+  var adr = location.origin, ent = {};
+  function del(f, label){ if(!d[f]) return null; var b = btn(t('Usuń'), function(){ ask(label + '?', t('Usuń'), function(){ ent[f] = '-'; save(); }); }, 'small danger'); b.title = label; return b; }
+  out.appendChild(fld(t('Nazwa wykonawcy'), fw, t('Tak jak na odsluchane.eu i na Deezerze. Z niej biorą się emisje w radiu i statystyki.'), true));
+  out.appendChild(fld(t('Kanał YouTube'), fyt, t('np. @muzykakoncalata (do statystyk potrzebny jest też klucz Google).'), true));
+  out.appendChild(el('div', { cls: 'frow' }, [fld(t('Klucz Last.fm'), flf, '', true), del('lf', t('Usuń klucz Last.fm'))]));
+  out.appendChild(cfHelp(t('Jak zdobyć klucz Last.fm (za darmo, 2 minuty)?'), [
+    [t('W przeglądarce: załóż konto na '), cfA('https://www.last.fm/join', 'last.fm'), t(' i zaloguj się.')],
+    [t('Otwórz '), cfA('https://www.last.fm/api/account/create'), '.'],
+    t('Wpisz e-mail i nazwę aplikacji (np. Bandezar), resztę zostaw pustą, kliknij Submit.'),
+    t('Skopiuj „API key” (32 znaki, nie „Shared secret”) i wklej wyżej.')]));
+  out.appendChild(el('div', { cls: 'frow' }, [fld(t('Klucz Google (YouTube i Dysk)'), fgk, '', true), del('gk', t('Usuń klucz Google'))]));
+  out.appendChild(cfHelp(t('Jak zdobyć klucz Google (za darmo, bez karty, ok. 5 minut)?'), [
+    [t('W przeglądarce otwórz '), cfA('https://console.cloud.google.com/'), t(' i zaloguj się kontem Google zespołu.')],
+    t('Na górze: wybór projektu → Nowy projekt → nazwa np. Bandezar → Utwórz.'),
+    t('Menu ☰ → Interfejsy API i usługi → Biblioteka: znajdź i włącz „YouTube Data API v3”, potem „Google Drive API”.'),
+    t('Interfejsy API i usługi → Dane logowania → + Utwórz dane logowania → Klucz interfejsu API.'),
+    t('Przy nowym kluczu: Ograniczenia interfejsu API → Ogranicz klucz → zaznacz tylko te dwa API → Zapisz.'),
+    t('Skopiuj klucz (zaczyna się od AIza) i wklej wyżej. Foldery z Dysku muszą być udostępnione „Każdy, kto ma link”.')]));
+  out.appendChild(fld(t('Kalendarz Google: identyfikator klienta'), fgc, t('Niepotrzebny, jeśli wystarczy „Kalendarz w telefonie” wyżej. Z nim terminy same trafiają do Kalendarza Google.'), true));
+  out.appendChild(cfHelp(t('Jak połączyć Kalendarz Google (ok. 10 minut)?'), [
+    t('W tym samym projekcie Google Cloud: Biblioteka → włącz „Google Calendar API”.'),
+    t('Menu ☰ → Google Auth Platform → Rozpocznij: nazwa aplikacji (np. Bandezar), Twój e-mail, Odbiorcy: Zewnętrzni → Utwórz.'),
+    t('Google Auth Platform → Odbiorcy → Opublikuj aplikację (inaczej tylko osoby z listy testowej mogą się połączyć).'),
+    t('Google Auth Platform → Klienci → + Utwórz klienta → Typ: Aplikacja internetowa.'),
+    [t('Autoryzowane źródła JavaScriptu: '), el('code', { text: adr }), t(' · Autoryzowane identyfikatory URI przekierowania: '), el('code', { text: adr + '/' })],
+    t('Utwórz, skopiuj „Identyfikator klienta” (kończy się na .apps.googleusercontent.com) i wklej wyżej.'),
+    t('Przy pierwszym łączeniu Google pokaże „Aplikacja niezweryfikowana”: kliknij Zaawansowane → Przejdź do Bandezar. To Wasza własna aplikacja.')]));
+  var go = btn(t('Zapisz i pobierz teraz'), function(){ save(); }, 'solid');
+  out.appendChild(el('div', { cls: 'acts' }, [go]));
+  function save(){
+    var gc = fgc.value.trim();
+    if(gc && !/^\d{6,20}-[a-z0-9]{10,40}\.apps\.googleusercontent\.com$/.test(gc)){ toast(t('Identyfikator klienta kończy się na .apps.googleusercontent.com. Skopiuj go jeszcze raz.')); return; }
+    var b = { w: fw.value, yt: fyt.value.trim(), lf: ent.lf || flf.value.trim(), gk: ent.gk || fgk.value.trim() }; ent = {};
+    go.disabled = true;
+    cfApi('/uslugi', { body: b }).then(function(){
+      var B2 = S.band; if(B2 && (B2.radioArtist !== sLine(fw.value, 80) || (B2.gkalId || '') !== gc)){ B2.radioArtist = sLine(fw.value, 80); B2.gkalId = gc; saveBand(); }
+      toast(t('Zapisano. Pobieram dane…'));
+      return cfApi('/uslugi/teraz', { body: {} });
+    }).then(function(d2){ go.disabled = false; cfLinksFill(out, d2); RADIO_LAST = 0; STATY_LAST = 0; FUEL_LAST = 0; radioAuto(true); statyAuto(true); fuelAuto(false).catch(function(){}); })
+      .catch(function(e){ go.disabled = false; toast((e && e.message) || String(e)); });
+  }
 }
 
 /* ===== 23-paliwa.js ===== */
@@ -5779,7 +5896,9 @@ var GKAL_SCOPE = 'https://www.googleapis.com/auth/calendar.calendarlist.readonly
 var GKAL_API = 'https://www.googleapis.com/calendar/v3';
 var GK = { tok: '', exp: 0, busy: false, err: '', last: 0, tm: null };
 
-function gkAvail(){ return !!GKAL_ID && location.protocol === 'https:'; }
+/* instalacja zespołu: własny Client ID zespołu (Ustawienia → Połączenia, zapisany przy zespole, widzą go wszyscy członkowie) */
+function gkClient(){ return ZESP ? ((S.band && S.band.gkalId) || '') : GKAL_ID; }
+function gkAvail(){ return !!gkClient() && location.protocol === 'https:'; }
 function gkCfg(){ var g = S.prefs.gkal; return g && typeof g === 'object' && typeof g.cal === 'string' && g.cal ? g : null; }
 function gkTokOk(){ return !!GK.tok && Date.now() < GK.exp - 60000; }
 function gkRedirect(){ return location.origin + '/'; }
@@ -5816,7 +5935,7 @@ function gkLogin(then, silent){
   if(!gkAvail()) return;
   var st = (uid('gk') + Math.random().toString(36).slice(2)).replace(/[^\w]/g, '').slice(0, 48);
   try { sessionStorage.setItem('bz-gk', JSON.stringify({ st: st, at: Date.now(), next: silent ? 'auto' : then === gkSync ? 'sync' : 'pick', h: silent ? location.hash : '#terminy' })); } catch(e){ toast(t('Nie udało się połączyć z Kalendarzem Google.')); return; }
-  location.assign('https://accounts.google.com/o/oauth2/v2/auth?client_id=' + encodeURIComponent(GKAL_ID) + '&redirect_uri=' + encodeURIComponent(gkRedirect())
+  location.assign('https://accounts.google.com/o/oauth2/v2/auth?client_id=' + encodeURIComponent(gkClient()) + '&redirect_uri=' + encodeURIComponent(gkRedirect())
     + '&response_type=token&include_granted_scopes=true' + (silent ? '&prompt=none' : '') + '&scope=' + encodeURIComponent(GKAL_SCOPE) + '&state=' + encodeURIComponent(st));
 }
 
