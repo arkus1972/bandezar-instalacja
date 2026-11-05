@@ -17,6 +17,6 @@
   // Pliki z Mediów: bez R2 (R2 na nowym koncie wymaga karty płatniczej), w schowku Durable Object „Pliki” (serwer/pliki-do.mjs).
   "durable_objects": { "bindings": [{ "name": "ZESPOL", "class_name": "Zespol" }, { "name": "SCHOWEK", "class_name": "Pliki" }] },
   "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Zespol"] }, { "tag": "v2", "new_sqlite_classes": ["Pliki"] }],
-  "vars": { "TRYB": "zespol", "SEND_DOMAINS": "", "REPLY_DOMAINS": "" },
-  "previews": { "vars": { "TRYB": "zespol", "SEND_DOMAINS": "", "REPLY_DOMAINS": "" } }
+  "vars": { "TRYB": "zespol" },
+  "previews": { "vars": { "TRYB": "zespol" } }
 }
